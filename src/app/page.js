@@ -11,6 +11,32 @@ import Select from 'react-select';
 
 const Page = () => {
 
+// Function to prompt for username and password
+// const login = () => {
+//   let isLoggedIn = false;
+
+//   const envusername = process.env.NEXT_PUBLIC_PASSWORD;
+//   const envpassword = process.env.NEXT_PUBLIC_PASSWORD;
+
+//   while (!isLoggedIn) {
+//     const username = prompt("Enter your username:");
+//     const password = prompt("Enter your password:");
+//     const validUsername = envusername;
+//     const validPassword = envpassword;
+//     if (username === validUsername && password === validPassword) {
+//       alert("Login successful!");
+//       isLoggedIn = true;
+//     } else {
+//       alert("Invalid username or password. Please try again.");
+//     }
+//   }
+// };
+
+// window.onload = () => {
+//   login();
+// };
+
+
   //print image
   const handlePrintImage = () => {
     const templateDiv = document.querySelector('.template');
