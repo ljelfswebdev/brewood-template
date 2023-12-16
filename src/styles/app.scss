@@ -1,0 +1,30 @@
+.container{
+    max-width: 1300px;
+    margin: auto;
+    padding: 0px 15px;
+}
+
+body{
+    margin: 0;
+}
+
+ul{
+    list-style: none;
+    padding-inline-start: 0px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+*{
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+}
+
+
+$lightBlue: #1510AB;
+$darkBlue: #0A0068;
+$greyBlue : #52588A;
+
+
+@import './components/page.scss';
+@import './components/form.scss';
+@import './components/template.scss';

@@ -1,0 +1,91 @@
+.template{
+    height: 1080px;
+    width: 800px;
+    position: relative;
+    padding:40px;
+
+    &__background{
+        position:absolute;
+        top:0;
+        left:0;
+        height: 100%;
+        width:100%;
+
+        img{
+            width:100%;
+            height:100%;
+            object-fit: cover;
+        }
+    }
+    &__player{
+        position:absolute;
+        bottom:0;
+        right:0;
+        height: 750px;
+        width:400px;
+
+        img{
+            width:100%;
+            height:100%;
+            object-fit: cover;
+        }
+    }
+
+    &__content{
+        position: relative;
+    }
+    &__logo{
+        max-width: 250px;
+        margin: 0px auto 20px auto;
+        img{
+            max-width: 100%;
+        }
+    }
+
+    &__game{
+        color: $lightBlue;
+        font-size: 40px;
+        font-weight: bold;
+        margin-bottom: 4px;
+
+        display:flex;
+        gap:10px;
+    
+    }
+    &__date{
+        color: $greyBlue;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        display:flex;
+        gap:10px;
+    }
+    &__team{
+        margin-bottom: 30px;
+        ul{
+            display: flex;
+            flex-direction:column;
+            gap:10px;
+            li{
+                color: $darkBlue;
+                font-size: 32px;
+                font-weight: normal;
+            }
+        }
+    }
+    &__sponsors{
+        ul{
+            display: flex;
+            gap: 20px;
+            align-items: center;
+
+            li{
+                max-width: 12%;
+                img{
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+
+}

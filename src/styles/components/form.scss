@@ -1,0 +1,44 @@
+form{
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+}
+
+.form{
+    &__title{
+        color: $darkBlue;
+        font-weight: bold;
+        font-size:24px;
+        margin: 20px 0px 10px 0px;
+        display: flex;
+    }
+
+    &__players{
+        display:flex;
+        flex-direction:column;
+        &-select{
+            margin-bottom:10px;
+        }
+        button{
+            margin-top:10px;
+        }
+    
+    }
+
+    &__print{
+        margin-top: 40px;
+        width:200px;
+        background-color: $darkBlue;
+        border:3px solid $darkBlue;
+        color: #fff;
+        height:50px;
+        cursor: pointer;
+        border-radius:3px;
+
+        &:hover{
+            color: $darkBlue;
+            background-color: #fff;
+        }
+
+    }
+}
