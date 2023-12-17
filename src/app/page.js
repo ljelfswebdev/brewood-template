@@ -192,8 +192,6 @@ const Page = () => {
 
     //players
     const [selectedPlayer, setSelectedPlayer] = useState('');
-    const [isCaptain, setIsCaptain] = useState(false);
-    const [isWicketkeeper, setIsWicketkeeper] = useState(false);
     const [selectedPlayers, setSelectedPlayers] = useState([]);
   
     const playerOptions = playersData.map(player => ({
@@ -206,20 +204,13 @@ const Page = () => {
       setSelectedPlayer(selectedOption ? selectedOption.value : '');
     };
   
-    const handleCaptainChange = e => {
-      setIsCaptain(e.target.checked);
-    };
-  
-    const handleWicketkeeperChange = e => {
-      setIsWicketkeeper(e.target.checked);
-    };
   
     const handleAddPlayer = () => {
       if (selectedPlayer) {
         const player = playersData.find(player => player.name === selectedPlayer);
         if (player) {
-          const modifiedName = `${player.name}${isCaptain ? ' *' : ''}${isWicketkeeper ? ' ✝' : ''}`;
-          setSelectedPlayers([...selectedPlayers, modifiedName]);
+          // const modifiedName = `${player.name}${isCaptain ? ' *' : ''}${isWicketkeeper ? ' ✝' : ''}`;
+          setSelectedPlayers([...selectedPlayers, player.name]);
         }
       }
     };
@@ -229,6 +220,10 @@ const Page = () => {
       updatedPlayers.splice(index, 1);
       setSelectedPlayers(updatedPlayers);
     };
+
+       //captain & WicketKeeper
+       const [isCaptain, setIsCaptain] = useState(null);
+       const [isWicketkeeper, setIsWicketkeeper] = useState(null);
 
 
     //image
@@ -353,14 +348,6 @@ const Page = () => {
                   className="form__players-select"
                 />
                 <div>
-                <label htmlFor="captain">
-                  Captain
-                  <input type="checkbox" id="captain" onChange={handleCaptainChange} />
-                </label>
-                <label htmlFor="wicketkeeper">
-                  Wicketkeeper
-                  <input type="checkbox" id="wicketkeeper" onChange={handleWicketkeeperChange} />
-                </label>
                 </div>
                 <button type="button" onClick={handleAddPlayer}>Add Player</button>
                 <ul id="brewood-team">
@@ -368,9 +355,31 @@ const Page = () => {
                     <li key={index}>
                       {player}
                       <button type="button" onClick={() => handleRemovePlayer(index)}>Remove</button>
+                      <div>
+                        <label>
+                          Captain:
+                          <input
+                            type="radio"
+                            name={`isCaptain${index}`}
+                            checked={isCaptain === index}
+                            onChange={() => setIsCaptain(index)}
+                          />
+                        </label>
+                        <label>
+                          Wicketkeeper:
+                          <input
+                            type="radio"
+                            name={`isWicketkeeper${index}`}
+                            checked={isWicketkeeper === index}
+                            onChange={() => setIsWicketkeeper(index)}
+                          />
+                        </label>
+                      </div>
+                
                     </li>
                   ))}
                 </ul>
+
               </div>
               </div>
               <div className="form__image">
@@ -412,12 +421,14 @@ const Page = () => {
               </div>
               <div className="template__team">
               <ul id="selectedPlayers">
-                  {selectedPlayers.map((player, index) => (
-                    <li key={index}>
-                      {player}
-                    </li>
-                  ))}
-                </ul>
+                {selectedPlayers.map((player, index) => (
+                  <li key={index}>
+                    {player}
+                    {isCaptain === index && ' *'}
+                    {isWicketkeeper === index && ' ✝'}
+                  </li>
+                ))}
+              </ul>
               </div>
               <div className="template__sponsors">
                 <ul>
