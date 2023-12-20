@@ -12,6 +12,7 @@ import Select from 'react-select';
 const Page = () => {
 
 // Function to prompt for username and password
+
 // const login = () => {
 //   let isLoggedIn = false;
 
@@ -414,7 +415,7 @@ const Page = () => {
                 <img src="./logo.png" alt="logo"/>
               </div>
               <div className="template__game">
-                <span id="brewood"></span>vs<span id="opponent"></span><span id="opponent-team"></span>
+                <span id="brewood"></span><span>vs</span><span id="opponent"></span><span id="opponent-team"></span>
               </div>
               <div className="template__date">
                 <span id="location">{selectedLocation}</span>-<span id="date">{formatDate(selectedDate)}</span>-<span id="time">{formatTime(selectedTime)}</span><span>Start</span>

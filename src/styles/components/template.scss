@@ -25,7 +25,7 @@
         width:400px;
 
         img{
-            width:100%;
+            width:400px;
             height:100%;
             object-fit: cover;
             overflow: visible;
@@ -49,8 +49,10 @@
         font-weight: bold;
         margin-bottom: 4px;
 
-        display:flex;
-        gap:10px;
+        display: inline-block;
+        span{
+            margin-right: 10px;
+        }
     
     }
     &__date{
