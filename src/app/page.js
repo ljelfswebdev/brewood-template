@@ -415,7 +415,11 @@ const Page = () => {
                 <img src="./logo.png" alt="logo"/>
               </div>
               <div className="template__game">
-                <span id="brewood"></span><span>vs</span><span id="opponent"></span><span id="opponent-team"></span>
+             
+              {selectedTeam && selectedTeam.label}&nbsp;
+              vs&nbsp;
+              {selectedOpponent && selectedOpponent.label}&nbsp;
+              {selectedOpponentTeam && selectedOpponentTeam.label}
               </div>
               <div className="template__date">
                 <span id="location">{selectedLocation}</span>-<span id="date">{formatDate(selectedDate)}</span>-<span id="time">{formatTime(selectedTime)}</span><span>Start</span>
@@ -425,8 +429,8 @@ const Page = () => {
                 {selectedPlayers.map((player, index) => (
                   <li key={index}>
                     {player}
-                    {isCaptain === index && ' *'}
-                    {isWicketkeeper === index && ' ✝'}
+                    {isCaptain === index && ' (c)'}
+                    {isWicketkeeper === index && ' (wk)'}
                   </li>
                 ))}
               </ul>

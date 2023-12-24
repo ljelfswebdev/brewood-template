@@ -49,10 +49,8 @@
         font-weight: bold;
         margin-bottom: 4px;
 
-        display: inline-block;
-        span{
-            margin-right: 10px;
-        }
+        display: flex;
+        flex-wrap: wrap;
     
     }
     &__date{

@@ -1,0 +1,16 @@
+.header{
+    margin-bottom: 40px;
+
+    ul{
+        display: flex;
+        justify-content: space-between;
+        width:100%;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    &__link{
+        color: $darkBlue;
+        font-size: 32px;
+    }
+}
