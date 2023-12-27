@@ -89,4 +89,38 @@
         }
     }
 
+
+
+    &__milestone-text{
+        position: absolute;
+            color: $greyBlue;
+            font-size: 360px;
+            font-weight: bold;
+            z-index: -1;
+            width:100%;
+            text-align: center;
+            padding-top: 360px;
+        
+            &--fifer{
+                font-size: 300px;
+            }
+    }
+
+    &__player-name{
+        width:100%;
+        font-size: 64px;
+        text-align: center;
+        color: $darkBlue;
+        font-weight: bold;
+    }
+
+    &__stats{
+        margin-top: 360px;
+        &-info{
+            font-size: 32px;
+            color: $darkBlue;
+            font-weight: bold;
+        }
+    }
+
 }

@@ -141,28 +141,31 @@ const Fifer = () => {
               </div>
   
               <div className="template__content">
+              <div className="template__milestone-text template__milestone-text--fifer">
+                  Fifer
+                </div>
                 <div className="template__logo">
                   <img src="./logo.png" alt="logo"/>
                 </div>
 
-                <div className="template__fifer-player">
+                <div className="template__player-name">
                 {selectedPlayer && `${selectedPlayer}`}
                 </div>
 
                 <div class="template__stats">
-                    <div class="teamplate__stats-info">
+                    <div class="template__stats-info">
                         {statsOvers}
                     </div>
-                    <div class="teamplate__stats-info">
+                    <div class="template__stats-info">
                         {statsMaidens}
                     </div>
-                    <div class="teamplate__stats-info">
+                    <div class="template__stats-info">
                         {statsRuns}
                     </div>
-                    <div class="teamplate__stats-info">
+                    <div class="template__stats-info">
                         {statsWickets}
                     </div>
-                    <div class="teamplate__stats-info">
+                    <div class="template__stats-info">
                         {statsEconomy}
                     </div>
                 </div>
