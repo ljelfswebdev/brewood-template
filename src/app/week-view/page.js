@@ -65,7 +65,7 @@ const WeekView = () => {
         const weekDayDiv = document.getElementById(day);
         
         if (inputVal && weekDayDiv) {
-          weekDayDiv.style.display = 'block';
+          weekDayDiv.style.display = 'flex';
           weekDayDiv.innerHTML = `
             <div>${day}</div>
             <span>${inputVal}</span>
@@ -124,6 +124,7 @@ const WeekView = () => {
                   />
                 </div>
                 
+                <span>To create a new event on a day, you must add '&lt;br&gt;' to the end of the line</span>
                 {renderDayInputs()}
 
             </form>
@@ -139,7 +140,7 @@ const WeekView = () => {
               </div>
   
               <div className="template__content">
-                <div className="template__logo">
+                <div className="template__logo template__logo--week-view">
                   <img src="./logo.png" alt="logo"/>
                 </div>
                 <div class="template__week-dates">
