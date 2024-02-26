@@ -14,17 +14,19 @@ ul{
 }
 
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+
+
+
 *{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Bungee', system-ui;
     text-transform: uppercase;
 }
 
 
-
-$lightBlue: #1510AB;
+$lightBlue: #4A56A6;
 $darkBlue: #0A0068;
-$greyBlue : #52588A;
+$greyBlue : #9B9BAA;
 
 
 @import './components/page.scss';

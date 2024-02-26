@@ -47,11 +47,12 @@
     }
 
     &__game{
-        color: $lightBlue;
-        font-size: 40px;
-        font-weight: bold;
+        color: $darkBlue;
+        font-size: 32px;
+        font-weight: normal;
         margin-bottom: 4px;
-
+        text-align:center;
+        justify-content: center;
         display: flex;
         flex-wrap: wrap;
     
@@ -59,20 +60,24 @@
     &__date{
         color: $greyBlue;
         font-size: 24px;
-        font-weight: bold;
+        font-weight: normal;
         margin-bottom: 20px;
         display:flex;
+        text-align:center;
+        justify-content: center;
         gap:10px;
     }
     &__team{
-        margin-bottom: 30px;
+        margin-bottom: 24px;
         ul{
+            max-width:fit-content;
             display: flex;
             flex-direction:column;
             gap:10px;
+            align-items: center;
             li{
                 color: $darkBlue;
-                font-size: 32px;
+                font-size: 28px;
                 font-weight: normal;
             }
         }
@@ -105,7 +110,7 @@
             padding-top: 360px;
         
             &--fifer{
-                font-size: 300px;
+                font-size: 250px;
             }
     }
 
@@ -118,7 +123,7 @@
     }
 
     &__stats{
-        margin-top: 360px;
+        margin-top: 320px;
         &-info{
             font-size: 32px;
             color: $darkBlue;
@@ -166,4 +171,21 @@
         }
     }
 
+    &__socials{
+        width:90%;
+        ul{
+            display:flex;
+            justify-content: space-between;
+
+            li{
+                display:flex;
+                gap:4px;
+                align-items: center;
+                svg{
+                    max-width:32px;
+                    width:32px;
+                }
+            }
+        }
+    }
 }
