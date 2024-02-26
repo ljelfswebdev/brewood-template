@@ -30,6 +30,10 @@
             object-fit: cover;
             overflow: visible;
         }
+
+        &--milestone{
+            right:100px;
+        }
     }
 
     &__content{

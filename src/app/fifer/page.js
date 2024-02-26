@@ -136,7 +136,7 @@ const Fifer = () => {
               <div className="template__background">
                 <img src="./background/Background.png" alt="background"/>
               </div>
-              <div className="template__player" id="template__player">
+              <div className="template__player template__player--milestone" id="template__player">
               <img src={`./players/${selectedPlayerImage}`} alt="player" />
               </div>
   
