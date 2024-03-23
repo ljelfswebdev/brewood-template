@@ -30,6 +30,12 @@ const Header = () => {
                         Week View
                     </Link>
                 </li>
+
+                <li>
+                    <Link href="/menu" className="header__link">
+                        Menu
+                    </Link>
+                </li>
             </ul>
             </div>
         </header>

@@ -256,3 +256,47 @@
         margin-bottom:16px;
     }
 }
+
+.menu-items{
+    ul{
+        display:flex;
+        flex-direction:column;
+        gap:32px;
+        margin-bottom:20px;
+        li{
+            color: $lightBlue;
+            font-size:32px;
+
+            display:flex;
+            justify-content: space-between;
+            gap:60px;
+
+            span{
+                &:last-of-type{
+                    color:$greyBlue;
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+}
+
+.menu-allegry{
+    margin-bottom:20px;
+}
+
+.form{
+    &__menu{
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+
+        input{
+            height:50px;
+        }
+
+        .form__print{
+            margin-top:0px !important;
+        }
+    }
+}
