@@ -131,7 +131,6 @@ const WeekView = () => {
   
   
   
-  
               <button className="form__print" onClick={handlePrintImage}>Print Image</button>
             </div>
             <div className="template">

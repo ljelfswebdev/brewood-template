@@ -21,8 +21,8 @@ const Header = () => {
                     </Link>
                 </li>
                 <li>
-                    <Link href="/event" className="header__link">
-                        Event
+                    <Link href="/result" className="header__link">
+                        Result
                     </Link>
                 </li>
                 <li>
