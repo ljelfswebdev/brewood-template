@@ -575,12 +575,12 @@ const Result = () => {
               </div>
               <div className="template__sponsors">
                 <ul>
-                  <li>
+                  {/* <li>
                     <img src="./sponsors/st-doms.png" alt="St.Doms"/>
                   </li>
                   <li>
                     <img src="./sponsors/s4s.png" alt="S4S"/>
-                  </li>
+                  </li> */}
                   <li>
                     <img src="./sponsors/essington.png" alt="Essington Fruit Farm"/>
                   </li>
