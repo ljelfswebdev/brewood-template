@@ -45,7 +45,7 @@ const Result = () => {
     html2canvas(templateDiv).then(canvas => {
       const image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
       const link = document.createElement('a');
-      link.download = 'template_image.png';
+      link.download = 'brewood_image.png';
       link.href = image;
       link.click();
     });
