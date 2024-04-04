@@ -15,4 +15,15 @@
             }
         }
     }
+
+    &__page{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:40px;
+        flex-direction: column;
+
+        font-size: 32px;
+        color:$darkBlue;
+    }
 }

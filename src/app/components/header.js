@@ -6,7 +6,7 @@ const Header = () => {
             <div className="container">
             <ul>
                 <li>
-                    <Link href="/" className="header__link">
+                    <Link href="/team-sheet" className="header__link">
                         Team Sheet
                     </Link>
                 </li>
