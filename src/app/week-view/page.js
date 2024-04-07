@@ -150,7 +150,7 @@ const WeekView = () => {
                 {renderDayDivs()}
                 </div>
             
-                <div className="template__sponsors">
+                <div className="template__sponsors template__sponsors--central">
                   <ul>
                     {/* <li>
                       <img src="./sponsors/st-doms.png" alt="St.Doms"/>

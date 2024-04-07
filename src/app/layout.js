@@ -10,17 +10,20 @@ export default function RootLayout({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    // Check if user is already logged in using localStorage
-    const loggedInStatus = localStorage.getItem('isLoggedIn');
-    const loginTimestamp = localStorage.getItem('loginTimestamp');
+    // Check if user is already logged in using sessionStorage
+    const loggedInStatus = sessionStorage.getItem('isLoggedIn');
+    const loginTimestamp = sessionStorage.getItem('loginTimestamp');
 
     if (loggedInStatus === 'true' && loginTimestamp) {
-      const weekAgo = new Date();
-      weekAgo.setDate(weekAgo.getDate() - 7);
+      const today = new Date();
+      const lastLoginDate = new Date(loginTimestamp);
 
-      // If login timestamp is within the last week, set the state to true
-      if (new Date(loginTimestamp) > weekAgo) {
+      // Check if last login was within the last day
+      if (today - lastLoginDate <= 24 * 60 * 60 * 1000) {
         setIsLoggedIn(true);
+      } else {
+        // If last login was more than a day ago, clear sessionStorage
+        sessionStorage.clear();
       }
     }
 
@@ -44,9 +47,9 @@ export default function RootLayout({ children }) {
           }
         }
 
-        // Store login state and timestamp in localStorage
-        localStorage.setItem('isLoggedIn', isLoggedIn);
-        localStorage.setItem('loginTimestamp', new Date());
+        // Store login state and timestamp in sessionStorage
+        sessionStorage.setItem('isLoggedIn', isLoggedIn);
+        sessionStorage.setItem('loginTimestamp', new Date());
         setIsLoggedIn(isLoggedIn);
       };
 

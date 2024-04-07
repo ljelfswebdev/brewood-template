@@ -102,6 +102,22 @@
                 }
             }
         }
+
+        &--central{
+            width:100%;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            ul{
+                justify-content: center;
+                li{
+                    max-width: 40%;
+                img{
+                    max-width: 100%;
+                }
+                }
+            }
+        }
     }
 
     &__socials{
