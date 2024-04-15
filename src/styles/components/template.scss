@@ -22,13 +22,15 @@
         bottom:0;
         right:0;
         height: 750px;
-        width:400px;
+        // width:400px;
+        min-width:400px;
+
 
         img{
-            width:400px;
+            // width:400px;
             height:100%;
             object-fit: cover;
-            overflow: visible;
+            overflow: hidden;
         }
 
         &--milestone{
@@ -203,7 +205,10 @@
                 font-weight: bold;
                 text-align: center;
             }
-            span{
+            ul{
+                margin:0;
+            }
+            li{
                 color: $greyBlue;
                 font-size: 20px;
                 line-height: 25px;

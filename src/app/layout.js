@@ -27,34 +27,34 @@ export default function RootLayout({ children }) {
       }
     }
 
-    if (!isLoggedIn) {
-      // If user is not logged in or login is expired, prompt for login
-      const login = () => {
-        const envUsername = process.env.NEXT_PUBLIC_USERNAME; 
-        const envPassword = process.env.NEXT_PUBLIC_PASSWORD; 
+    // if (!isLoggedIn) {
+    //   // If user is not logged in or login is expired, prompt for login
+    //   const login = () => {
+    //     const envUsername = process.env.NEXT_PUBLIC_USERNAME; 
+    //     const envPassword = process.env.NEXT_PUBLIC_PASSWORD; 
 
-        let isLoggedIn = false;
+    //     let isLoggedIn = false;
 
-        while (!isLoggedIn) {
-          const username = prompt("Enter your username:");
-          const password = prompt("Enter your password:");
+    //     while (!isLoggedIn) {
+    //       const username = prompt("Enter your username:");
+    //       const password = prompt("Enter your password:");
 
-          if (username === envUsername && password === envPassword) {
-            alert("Login successful!");
-            isLoggedIn = true;
-          } else {
-            alert("Invalid username or password. Please try again.");
-          }
-        }
+    //       if (username === envUsername && password === envPassword) {
+    //         alert("Login successful!");
+    //         isLoggedIn = true;
+    //       } else {
+    //         alert("Invalid username or password. Please try again.");
+    //       }
+    //     }
 
-        // Store login state and timestamp in sessionStorage
-        sessionStorage.setItem('isLoggedIn', isLoggedIn);
-        sessionStorage.setItem('loginTimestamp', new Date());
-        setIsLoggedIn(isLoggedIn);
-      };
+    //     // Store login state and timestamp in sessionStorage
+    //     sessionStorage.setItem('isLoggedIn', isLoggedIn);
+    //     sessionStorage.setItem('loginTimestamp', new Date());
+    //     setIsLoggedIn(isLoggedIn);
+    //   };
 
-      login();
-    }
+    //   login();
+    // }
   }, []);
 
   return (
