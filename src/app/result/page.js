@@ -549,7 +549,7 @@ const Result = () => {
                             {opponentScore}
                           </span>
                         </div>
-                        <div className="template__scores-info" dangerouslySetInnerHTML={{ __html: bestBat.replace(/\/\//gi, '<br />') }} />
+                        <div className="template__scores-info" dangerouslySetInnerHTML={{ __html: bestBowl.replace(/\/\//gi, '<br />') }} />
 
                       </div>
                       <div className="template__scores-score">
