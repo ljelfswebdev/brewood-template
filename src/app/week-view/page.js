@@ -111,17 +111,22 @@ const WeekView = () => {
   };
 
   const renderDayDivs = () => {
-    return Object.keys(dayItems).map((day) => (
-      <div key={day} className="template__week-day">
-        <div>{day}</div>
-        <ul>
-          {dayItems[day].map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-      </div>
+    const orderedDaysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  
+    return orderedDaysOfWeek.map((day) => (
+      dayItems[day] && (
+        <div key={day} className="template__week-day">
+          <div>{day}</div>
+          <ul>
+            {dayItems[day].map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      )
     ));
   };
+  
 
   return (
     <main className="brewood">
