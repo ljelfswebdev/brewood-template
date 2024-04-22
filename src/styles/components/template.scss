@@ -58,6 +58,7 @@
     &__game{
         color: $darkBlue;
         font-size: 32px;
+        line-height:36px;
         font-weight: normal;
         margin-bottom: 4px;
         text-align:center;
@@ -68,6 +69,7 @@
     &__date{
         color: $greyBlue;
         font-size: 24px;
+        line-height:28px;
         font-weight: normal;
         margin-bottom: 20px;
         display:flex;
@@ -86,6 +88,7 @@
             li{
                 color: $darkBlue;
                 font-size: 28px;
+                line-height:32px;
                 font-weight: normal;
             }
         }
@@ -147,6 +150,7 @@
         position: absolute;
             color: $greyBlue;
             font-size: 360px;
+            line-height:360px;
             font-weight: bold;
             z-index: -1;
             width:100%;
@@ -155,12 +159,14 @@
         
             &--fifer{
                 font-size: 250px;
+                line-height:250px;
             }
     }
 
     &__player-name{
         width:100%;
         font-size: 64px;
+        line-height:68px;
         text-align: center;
         color: $darkBlue;
         font-weight: bold;
@@ -170,6 +176,7 @@
         margin-top: 320px;
         &-info{
             font-size: 32px;
+            line-height:36px;
             color: $darkBlue;
             font-weight: bold;
         }
@@ -179,6 +186,7 @@
         color: $lightBlue;
         font-weight: bold;
         font-size: 16px;
+        line-height:20px;
         display: flex;
         justify-content: center;
         margin-top: 16px;
@@ -202,6 +210,7 @@
             div{
                 color: $darkBlue;
                 font-size: 28px;
+                line-height:32px;
                 font-weight: bold;
                 text-align: center;
             }
@@ -221,6 +230,7 @@
     &__result{
         color: $darkBlue;
         font-size: 60px;
+        line-height:64px;
         font-weight: normal;
         margin-bottom: 4px;
         text-align:center;
@@ -232,6 +242,7 @@
     &__toss{
         color: $darkBlue;
         font-size: 24px;
+        line-height:28px;
         font-weight: normal;
         margin-bottom: 32px;
         text-align:center;
@@ -260,20 +271,24 @@
         &-team{
             color: $darkBlue;
             font-size: 40px;
+            line-height:44px;
         }
         &-text{
             color: $greyBlue;
             font-size: 40px;
+            line-height:44px;
         }
         &-info{
             color: $lightBlue;
             font-size: 28px;
+            line-height:32px;
         }
     }
 
     &__match-result{
         color: $darkBlue;
         font-size: 40px;
+        line-height:44px;
         margin-bottom:16px;
     }
 }
@@ -287,6 +302,7 @@
         li{
             color: $lightBlue;
             font-size:32px;
+            line-height:36px;
 
             display:flex;
             justify-content: space-between;
