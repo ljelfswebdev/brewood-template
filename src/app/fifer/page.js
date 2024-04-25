@@ -136,9 +136,12 @@ const Fifer = () => {
               <div className="template__background">
                 <img src="./background/Background.png" alt="background"/>
               </div>
-              <div className="template__player template__player--milestone" id="template__player">
-              <img src={`./players/${selectedPlayerImage}`} alt="player" />
-              </div>
+              {selectedPlayerImage && (
+                <div className="template__player template__player--milestone" id="template__player">
+                  <img src={`./players/${selectedPlayerImage}`} alt="player" />
+                </div>
+              )}
+
   
               <div className="template__content">
               <div className="template__milestone-text template__milestone-text--fifer">
@@ -152,7 +155,7 @@ const Fifer = () => {
                 {selectedPlayer && `${selectedPlayer}`}
                 </div>
 
-                <div class="template__stats">
+                <div className={`template__stats ${!selectedPlayerImage ? 'template__stats--centre' : ''}`}>
                     <div class="template__stats-info">
                         {statsOvers}
                     </div>

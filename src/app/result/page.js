@@ -434,7 +434,7 @@ const Result = () => {
 
               <div className="form__best-bat">
                <span className="form__title">
-                    Best Batting (add // to start new line)
+                    Best Batting
                 </span>
                 <textarea
                   value={bestBatValue}
@@ -445,7 +445,7 @@ const Result = () => {
 
               <div className="form__best-bowl">
                <span className="form__title">
-                    Best Bowling (add // to start new line)
+                    Best Bowling
                 </span>
                 <textarea
                   value={bestBowlValue}
@@ -526,8 +526,15 @@ const Result = () => {
                           </span>
                         </div>
                       
-                          <div className="template__scores-info" dangerouslySetInnerHTML={{ __html: bestBat.replace(/<br>/gi, '<br />') }} />
-                      
+                        <div className="template__scores-info">
+                        {bestBatValue.split('\n').map((line, index) => (
+                          <>
+                            {line}
+                            <br />
+                          </>
+                        ))}
+                      </div>
+
                       </div>
                       <div className="template__scores-score">
                         <div className="template__scores-score-main">
@@ -536,7 +543,14 @@ const Result = () => {
                             {opponentScore}
                           </span>
                         </div>
-                        <div className="template__scores-info" dangerouslySetInnerHTML={{ __html: bestBowl.replace(/<br>/gi, '<br />') }} />
+                        <div className="template__scores-info">
+                        {bestBowlValue.split('\n').map((line, index) => (
+                          <>
+                            {line}
+                            <br />
+                          </>
+                        ))}
+                        </div>
                       </div>
                     </>
                   )}
@@ -561,6 +575,7 @@ const Result = () => {
                         </div>
                       
                         <div className="template__scores-info" dangerouslySetInnerHTML={{ __html: bestBat.replace(/\/\//gi, '<br />') }} />
+
 
                       
                       </div>

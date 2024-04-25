@@ -21,7 +21,7 @@
         position:absolute;
         bottom:0;
         right:0;
-        height: 750px;
+        height: 700px;
         // width:400px;
         min-width:400px;
 
@@ -179,6 +179,11 @@
             line-height:36px;
             color: $darkBlue;
             font-weight: bold;
+        }
+
+        &--centre{
+            margin-left: auto;
+            margin-right: auto;
         }
     }
 
