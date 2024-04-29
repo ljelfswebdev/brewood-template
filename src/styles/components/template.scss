@@ -3,6 +3,11 @@
     width: 800px;
     position: relative;
     padding:40px;
+    overflow:hidden;
+
+    &--team{
+        padding-bottom:0;
+    }
 
     &__background{
         position:absolute;
@@ -79,6 +84,10 @@
     }
     &__team{
         margin-bottom: 24px;
+        display: flex;
+        width:100%;
+        justify-content:center;
+        padding-bottom:60px;
         ul{
             max-width:fit-content;
             display: flex;
@@ -90,6 +99,15 @@
                 font-size: 28px;
                 line-height:32px;
                 font-weight: normal;
+            }
+        }
+
+        &--sponsor{
+            display:flex;
+            margin-top:auto;
+            img{
+                max-width:200px;
+                height:auto;
             }
         }
     }
@@ -125,9 +143,25 @@
         }
     }
 
+    &__p{
+        height:100%;
+        img{
+            height:100%;
+            max-width: 100%;
+            object-fit: contain;
+
+        }
+    }
+
     &__socials{
         margin-top:auto;
         width:90%;
+
+        &--team{
+            position: absolute;
+            z-index:2;
+            bottom:-5px;
+        }
         ul{
             display:flex;
             justify-content: space-between;
@@ -300,6 +334,11 @@
         font-size: 40px;
         line-height:44px;
         margin-bottom:16px;
+    }
+    &__grid{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        height:100%;
     }
 }
 
