@@ -1,7 +1,7 @@
 [
     {
         "name": "Lewis Jelfs",
-        "image": ""
+        "image": "lewis_jelfs.png"
     },
     {
         "name": "Nick Wright",
@@ -81,11 +81,11 @@
     },
     {
         "name": "Tom Biggar",
-        "image": ""
+        "image": "tom_biggar.png"
     },
     {
         "name": "Nick Bill",
-        "image": ""
+        "image": "nick_bill_bat.png"
     },
     {
         "name": "Steve Bill",
@@ -209,7 +209,7 @@
     },
     {
         "name": "Sara Capewell",
-        "image": ""
+        "image": "sara_capewell.png"
     },
     {
         "name": "Alistair Carey",
@@ -465,7 +465,7 @@
     },
     {
         "name": "Barry Piper",
-        "image": ""
+        "image": "barry_piper.png"
     },
     {
         "name": "Navdeep Poonia",
@@ -493,7 +493,7 @@
     },
     {
         "name": "Manish Rana",
-        "image": ""
+        "image": "manish_rana.png"
     },
     {
         "name": "Maya Rana",
@@ -509,7 +509,7 @@
     },
     {
         "name": "John Redrup",
-        "image": ""
+        "image": "john_redrup.png"
     },
     {
         "name": "Nick Redrup",
@@ -533,7 +533,7 @@
     },
     {
         "name": "Jack Riley-Craig",
-        "image": ""
+        "image": "jack_riley_craig.png"
     },
     {
         "name": "James Schofield",
@@ -545,7 +545,7 @@
     },
     {
         "name": "Maddie Shaw",
-        "image": ""
+        "image": "maddy_shaw.png"
     },
     {
         "name": "Parminder Singh",
@@ -665,15 +665,11 @@
     },
     {
         "name": "Viswesh Suman",
-        "image": ""
-    },
-    {
-        "name": "Maddie Shaw",
-        "image": ""
+        "image": "visesh_sunam.png"
     },
     {
         "name": "Rachel Sharp",
-        "image": ""
+        "image": "rach_sharp.png"
     },
     {
         "name": "KC Tabner",
@@ -685,11 +681,11 @@
     },
     {
         "name": "Emily Welsh",
-        "image": ""
+        "image": "em_welsh.png"
     },
     {
         "name": "Becca Thomas",
-        "image": ""
+        "image": "becca_thomas.png"
     },
     {
         "name": "Jainesh Patel",
