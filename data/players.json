@@ -545,7 +545,7 @@
     },
     {
         "name": "Maddie Shaw",
-        "image": "maddy_shaw.png"
+        "image": "maddie_shaw.png"
     },
     {
         "name": "Parminder Singh",
@@ -705,6 +705,14 @@
     },
     {
         "name": "Will Humphries",
+        "image": ""
+    },
+    {
+        "name": "Myia Chard",
+        "image": ""
+    },
+    {
+        "name": "Emma Ibison",
         "image": ""
     }
 
