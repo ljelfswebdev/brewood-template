@@ -23,6 +23,11 @@ const Menu = () => {
         });
       };
 
+      const smallerSized = () => {
+        const template = document.querySelector('.template');
+        template.classList.toggle('small_me');
+      }
+
       const [menuItems, setMenuItems] = useState([]);
       const [item, setItem] = useState("");
       const [cost, setCost] = useState("");
@@ -85,6 +90,7 @@ const Menu = () => {
                 ))}
 
             </ul>
+            <button className="form__print" onClick={smallerSized}>Shrink</button>
             <button className="form__print" onClick={handlePrintImage}>Print Image</button>
           </div>
           <div className="template">

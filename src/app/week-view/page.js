@@ -22,6 +22,10 @@ const WeekView = () => {
     });
   };
 
+  const smallerSized = () => {
+    const template = document.querySelector('.template');
+    template.classList.toggle('small_me');
+  }
 
 
   const handleWeekStartChange = e => {
@@ -153,6 +157,7 @@ const WeekView = () => {
           
               {renderInputs()}
             </form>
+            <button className="form__print" onClick={smallerSized}>Shrink</button>
             <button className="form__print" onClick={handlePrintImage}>Print Image</button>
           </div>
           <div className="template">
