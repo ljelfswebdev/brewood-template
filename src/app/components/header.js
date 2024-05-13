@@ -36,6 +36,11 @@ const Header = () => {
                         Menu
                     </Link>
                 </li>
+                <li>
+                    <Link href="/notice" className="header__link">
+                        Notice
+                    </Link>
+                </li>
             </ul>
             </div>
         </header>
