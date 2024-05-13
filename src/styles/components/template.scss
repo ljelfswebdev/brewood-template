@@ -76,14 +76,14 @@
         font-size: 24px;
         line-height:28px;
         font-weight: normal;
-        margin-bottom: 20px;
+        margin-bottom: 12px;
         display:flex;
         text-align:center;
         justify-content: center;
         gap:10px;
     }
     &__team{
-        margin-bottom: 24px;
+        
         display: flex;
         width:100%;
         justify-content:center;
@@ -92,7 +92,7 @@
             max-width:fit-content;
             display: flex;
             flex-direction:column;
-            gap:10px;
+            gap:8px;
             align-items: center;
             li{
                 color: $darkBlue;
@@ -105,9 +105,11 @@
         &--sponsor{
             display:flex;
             margin-top:auto;
+            margin-bottom:40px;
             img{
-                max-width:200px;
+                max-width:150px;
                 height:auto;
+            
             }
         }
     }
