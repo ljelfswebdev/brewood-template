@@ -11,6 +11,7 @@ const Notice = () => {
     const [subtitle, setSubtitle] = useState('');
     const [bodyText, setBodyText] = useState('');
     const [image, setImage] = useState('');
+    const [sponsor, setSponsor] = useState('');
 
     const handlePrintImage = () => {
         const templateDiv = document.querySelector('.template');
@@ -75,6 +76,13 @@ const Notice = () => {
           </div>
           <input type="file" onChange={(e) => setImage(URL.createObjectURL(e.target.files[0]))} />
         </div>
+
+        <div className="form__group">
+          <div className="form__title">
+           Add Sponsor
+          </div>
+          <input type="file" onChange={(e) => setSponsor(URL.createObjectURL(e.target.files[0]))} />
+        </div>
       </form>
   
   
@@ -114,8 +122,7 @@ const Notice = () => {
                           </>
                         ))}
                 </div>
-                </div>
-            
+
                 <div className="template__sponsors template__sponsors--central">
                   <ul>
                     {/* <li>
@@ -127,8 +134,16 @@ const Notice = () => {
                     <li>
                       <img src="./sponsors/essington.png" alt="Essington Fruit Farm"/>
                     </li>
+                    {sponsor &&  (
+                      <li>
+                      <img className="notice__image" src={sponsor} alt="Uploaded Image" />
+                      </li>
+                      )}
                   </ul>
                 </div>
+                </div>
+            
+                
                 <div className="template__socials">
                 <ul>
                   <li>
