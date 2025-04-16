@@ -5,7 +5,8 @@
     },
     {
         "name": "Nick Wright",
-        "image": "nick-wright.png"
+        "image": "nick-wright.png",
+        "blue" : "nick_wright_blue.png"
     },
     {
         "name": "Tom Bird",
@@ -553,7 +554,8 @@
     },
     {
         "name": "Josh Skyte",
-        "image": "josh-skyte-1.png"
+        "image": "josh-skyte-1.png",
+        "blue":"josh_skyte_blue.png"
     },
     {
         "name": "Daniel Smith",
