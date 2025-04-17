@@ -1,7 +1,8 @@
 [
     {
         "name": "Lewis Jelfs",
-        "image": "lewis_jelfs.png"
+        "image": "lewis_jelfs.png",
+        "blue" : "lewis-jelfs-blue.png"
     },
     {
         "name": "Nick Wright",
@@ -386,7 +387,8 @@
     },
     {
         "name": "Nick Jones",
-        "image": ""
+        "image": "",
+        "blue" : "nick-jones-blue.png"
     },
     {
         "name": "Mark Kinson",
@@ -783,7 +785,8 @@
     },
     {
         "name": "Hayden Cross",
-        "image": ""
+        "image": "",
+        "blue" :"hayden-cross-blue.png"
     },
     {
         "name": "Finn Mayer",
