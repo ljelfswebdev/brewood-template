@@ -87,7 +87,8 @@
     },
     {
         "name": "Nick Bill",
-        "image": "nick_bill_bat.png"
+        "image": "nick_bill_bat.png",
+        "blue" : "nick_bill_blue.png"
     },
     {
         "name": "Steve Bill",
@@ -299,7 +300,8 @@
     },
     {
         "name": "Tim Friend",
-        "image": "tim_friend.png"
+        "image": "tim_friend.png",
+        "blue":"trav_blue.png"
     },
     {
         "name": "Oliver Gadd",
@@ -536,7 +538,8 @@
     },
     {
         "name": "Jack Riley-Craig",
-        "image": "jack_riley_craig.png"
+        "image": "jack_riley_craig.png",
+        "blue" : "jrc_blue.png"
     },
     {
         "name": "James Schofield",
@@ -657,7 +660,8 @@
     },
     {
         "name": "Rohan Woodman",
-        "image": ""
+        "image": "",
+        "blue":"rohan_blue.png"
     },
     {
         "name": "Taylor Wycherley",
@@ -745,7 +749,8 @@
     },
     {
     "name" : "Zayn Abdul Rahim",
-    "image" : ""
+    "image" : "",
+    "blue":"zayn_blue.png"
     },
     {
         "name": "William Bradford",
