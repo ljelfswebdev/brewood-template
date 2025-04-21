@@ -7,7 +7,7 @@ import Header from './components/header';
 const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({ children }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   useEffect(() => {
     const loggedInStatus = sessionStorage.getItem('isLoggedIn');

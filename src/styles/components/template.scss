@@ -283,6 +283,12 @@
         justify-content: center;
         display: flex;
         flex-wrap: wrap;
+
+        &-sub{
+            color: $greyBlue;
+            font-size: 32px;
+            line-height:36px;
+        }
     }
 
     &__toss{

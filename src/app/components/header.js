@@ -41,6 +41,11 @@ const Header = () => {
                         Notice
                     </Link>
                 </li>
+                <li>
+                    <Link href="/fantasy" className="header__link">
+                        Fantasy
+                    </Link>
+                </li>
             </ul>
             </div>
         </header>
