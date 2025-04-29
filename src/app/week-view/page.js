@@ -174,10 +174,30 @@ const WeekView = () => {
               <div className="template__week">
                 {renderDayDivs()}
               </div>
-              <div className="template__sponsors template__sponsors--central">
-                <ul>
-                <li>
+              <div className="template__sponsors template__sponsors--central" style={{ 
+   maxHeight: "100px"
+ }} >
+                <ul
+
+style={{ 
+   height: "100%"
+ }} >
+                <li
+                                                      style={{ 
+                                                        display: "flex", 
+                                                         gap: "16px" ,
+                                                         justifyContent: "center",
+                                                         height: "100%"
+                                                       }} >
                       <img src="./sponsors/essington.png" alt="Essington Fruit Farm"/>
+                                        <img 
+                      src="./sponsors/sky-sports.png" 
+                      alt="Sky Sports" 
+                      style={{ 
+                        objectFit: "contain", 
+                        marginLeft: "16px" 
+                      }} 
+                    />
                      </li>
                 </ul>
               </div>

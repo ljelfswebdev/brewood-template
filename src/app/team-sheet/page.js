@@ -236,7 +236,7 @@ const Page = () => {
     
     const handlePlayerImageChange = (option) => {
       // option.image already holds the correct file (normal or blue)
-      setSelectedPlayerImage(option?.image || "");
+      setSelectedPlayerImage(option?.image ?? null);
     };
 
   
@@ -432,11 +432,23 @@ const Page = () => {
                 ))}
                 <li className="template__team--sponsor">
                     <img src="./sponsors/essington.png" alt="Essington Fruit Farm"/>
+                    <img 
+                      src="./sponsors/sky-sports.png" 
+                      alt="Sky Sports" 
+                      style={{ 
+                        objectFit: "contain", 
+                        marginLeft: "16px" 
+                      }} 
+                    />
                   </li>
                 </ul>
               </div>
               <div className="template__p" id="template__player">
-              <img src={`./players/${selectedPlayerImage}`} alt="player" />
+                {selectedPlayerImage && selectedPlayerImage.length > 0 ? (
+                  <img src={`./players/${selectedPlayerImage}`} alt="player" />
+                ) : (
+                  <img src="./logo.png" alt="logo" className="template__player-logo" />
+                )}
               </div>
             </div>
             </div>
