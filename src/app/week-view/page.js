@@ -179,9 +179,9 @@ const WeekView = () => {
  }} >
                 <ul
 
-style={{ 
-   height: "100%"
- }} >
+                style={{ 
+                  height: "100%"
+                }} >
                 <li
                                                       style={{ 
                                                         display: "flex", 
