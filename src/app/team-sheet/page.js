@@ -437,7 +437,8 @@ const Page = () => {
                       alt="Sky Sports" 
                       style={{ 
                         objectFit: "contain", 
-                        marginLeft: "16px" 
+                        marginLeft: "16px",
+                        height: "40px"
                       }} 
                     />
                   </li>

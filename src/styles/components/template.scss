@@ -106,6 +106,7 @@
             display:flex;
             margin-top:auto;
             margin-bottom:40px;
+            align-items: center;
             img{
                 max-width:150px;
                 height:auto;
@@ -147,6 +148,7 @@
 
     &__p{
         height:100%;
+        display: flex;
         img{
             height:100%;
             max-width: 100%;
@@ -351,6 +353,9 @@
 
     &__player-logo{
         object-fit: contain !important;
+        max-width:250px !important;
+        max-height:250px !important;
+        margin:auto;
     }
 }
 
