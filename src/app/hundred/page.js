@@ -30,9 +30,8 @@ const Fifer = () => {
       const handlePlayerChange = selectedOption => {
         setSelectedPlayer(selectedOption ? selectedOption.value : '');
       };
-    
-      const selectedPlayerImage = playerOptions.find(player => player.value === selectedPlayer)?.image || '';
-
+      const selectedPlayerData = playersData.find(player => player.name === selectedPlayer);
+      const selectedPlayerImage = selectedPlayerData?.image || selectedPlayerData?.blue || '';
 
         //runs
         const [runs, setRuns] = useState('');

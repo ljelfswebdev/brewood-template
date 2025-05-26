@@ -31,8 +31,8 @@ const Fifer = () => {
         setSelectedPlayer(selectedOption ? selectedOption.value : '');
       };
     
-      const selectedPlayerImage = playerOptions.find(player => player.value === selectedPlayer)?.image || '';
-
+      const selectedPlayerData = playersData.find(player => player.name === selectedPlayer);
+      const selectedPlayerImage = selectedPlayerData?.image || selectedPlayerData?.blue || '';
 
 
       //overs
