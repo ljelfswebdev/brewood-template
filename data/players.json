@@ -220,7 +220,7 @@
     },
     {
         "name": "Andy Carey",
-        "image": "andy_carey.png"
+        "image": "andy-carey.png"
     },
     {
         "name": "Josh Chadwick",
@@ -244,7 +244,7 @@
     },
     {
         "name": "Glenn Cook",
-        "image": ""
+        "image": "glenn-cook.png"
     },
     {
         "name": "Pixie Cossey",
@@ -474,7 +474,8 @@
     },
     {
         "name": "Barry Piper",
-        "image": "barry_piper.png"
+        "image": "barry_piper.png",
+         "blue" : "barry_piper-blue.png"
     },
     {
         "name": "Navdeep Poonia",
@@ -669,7 +670,7 @@
     },
     {
         "name": "Taylor Wycherley",
-        "image": ""
+        "image": "taylor-wycherley.png"
     },
     {
         "name": "Mike Thomas",
