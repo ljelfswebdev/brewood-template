@@ -205,30 +205,23 @@ const Page = () => {
     //image
 
     const imageOptions = useMemo(() => {
-      // build an option for every selected player:
-      //   • “Name”           → normal head‑shot  (if it exists)
-      //   • “Name – Blue”    → blue variant      (if it exists)
       return selectedPlayers.flatMap((name) => {
         const p = playersData.find((pl) => pl.name === name);
         if (!p) return [];
-    
-        const opts = [];
-    
-        if (p.image) {
-          opts.push({
-            label: p.name,           // e.g. “Nick Wright”
-            value: p.image,          // unique value for the picker
-            image: p.image,          // file path used later
-          });
-        }
-        if (p.blue) {
-          opts.push({
-            label: `${p.name} - Blue`,
-            value: p.blue,
-            image: p.blue,
-          });
-        }
-        return opts;
+
+        const variants = [
+          { key: 'image', label: p.name, file: p.image },
+          { key: 'blue', label: `${p.name} - Blue`, file: p.blue },
+          { key: 'action', label: `${p.name} - Action`, file: p.action },
+        ];
+
+        return variants
+          .filter((variant) => variant.file)
+          .map((variant) => ({
+            label: variant.label,
+            value: `${p.name}-${variant.key}`,
+            image: variant.file,
+          }));
       });
     }, [selectedPlayers]);
     
@@ -387,7 +380,7 @@ const Page = () => {
 
                 <Select
   options={imageOptions}          // ⬅️  use the new list
-  placeholder="Selected players with images"
+  placeholder="Selected players with available images"
   onChange={handlePlayerImageChange}
 />
 
@@ -432,15 +425,7 @@ const Page = () => {
                 ))}
                 <li className="template__team--sponsor">
                     <img src="./sponsors/essington.png" alt="Essington Fruit Farm"/>
-                    <img 
-                      src="./sponsors/sky-sports.png" 
-                      alt="Sky Sports" 
-                      style={{ 
-                        objectFit: "contain", 
-                        marginLeft: "16px",
-                        height: "40px"
-                      }} 
-                    />
+                    
                   </li>
                 </ul>
               </div>
