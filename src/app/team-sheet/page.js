@@ -8,6 +8,8 @@ import { useState, useEffect } from "react";
 import Select from 'react-select';
 import { useMemo } from "react";
 
+const TEAM_SHEET_STORAGE_PREFIX = 'brewood-team-sheet:';
+const TEAM_SHEET_TTL_MS = 14 * 24 * 60 * 60 * 1000;
 
 
 const Page = () => {
@@ -35,10 +37,6 @@ const Page = () => {
   const [selectedTeam, setSelectedTeam] = useState(null);
   const handleTeamSelect = selectedOption => {
     setSelectedTeam(selectedOption);
-    const brewoodSpan = document.getElementById('brewood');
-    if (brewoodSpan) {
-      brewoodSpan.textContent = selectedOption.label;
-    }
   };
 
   //opponents
@@ -51,10 +49,6 @@ const Page = () => {
 
   const handleOpponentSelect = selectedOption => {
     setSelectedOpponent(selectedOption);
-    const opponentSpan = document.getElementById('opponent');
-    if (opponentSpan) {
-      opponentSpan.textContent = selectedOption.label;
-    }
   };
 
 
@@ -65,47 +59,28 @@ const Page = () => {
       value: item.team
     }));
   
-    const [selectedOpponentTeam, setSelectedOpponentTeam] = useState(null);
+  const [selectedOpponentTeam, setSelectedOpponentTeam] = useState(null);
   
     const handleOpponentTeamSelect = selectedOption => {
       setSelectedOpponentTeam(selectedOption);
-      const opponentTeamSpan = document.getElementById('opponent-team');
-      if (opponentTeamSpan) {
-        opponentTeamSpan.textContent = selectedOption.label;
-      }
     };
 
     //location
 
     const [selectedLocation, setSelectedLocation] = useState('');
-
-    useEffect(() => {
-      const locationRadios = document.querySelectorAll('input[type="radio"][name="location"]');
-      locationRadios.forEach(radio => {
-        radio.addEventListener('change', e => {
-          const selectedLocationValue = e.target.value;
-          setSelectedLocation(selectedLocationValue);
-  
-          const locationSpan = document.getElementById('location');
-          if (locationSpan) {
-            locationSpan.textContent = selectedLocationValue;
-          }
-        });
-      });
-  
-      // Clean up event listeners on unmount (optional)
-      return () => {
-        locationRadios.forEach(radio => {
-          radio.removeEventListener('change', () => {});
-        });
-      };
-    }, []);
+    const handleLocationChange = e => {
+      setSelectedLocation(e.target.value);
+    };
 
     //date
 
     const [selectedDate, setSelectedDate] = useState('');
 
     const formatDate = date => {
+      if (!date) {
+        return '';
+      }
+
       const formattedDate = new Date(date).toLocaleDateString('en-GB', {
         day: '2-digit',
         month: '2-digit',
@@ -118,19 +93,16 @@ const Page = () => {
     const handleDateChange = e => {
       const selectedDateValue = e.target.value;
       setSelectedDate(selectedDateValue);
-
-      const formattedDate = formatDate(selectedDateValue);
-
-      const dateSpan = document.getElementById('date');
-      if (dateSpan) {
-        dateSpan.textContent = formattedDate;
-      }
     };
 
     //Time
     const [selectedTime, setSelectedTime] = useState('');
 
     const formatTime = time => {
+      if (!time) {
+        return '';
+      }
+
       const [hours, minutes] = time.split(':');
       let formattedTime = '';
   
@@ -155,19 +127,13 @@ const Page = () => {
     const handleTimeChange = e => {
       const selectedTimeValue = e.target.value;
       setSelectedTime(selectedTimeValue);
-  
-      const formattedTime = formatTime(selectedTimeValue);
-  
-      const timeSpan = document.getElementById('time');
-      if (timeSpan) {
-        timeSpan.textContent = formattedTime;
-      }
     };
 
 
 
     //players
     const [selectedPlayer, setSelectedPlayer] = useState('');
+    const [selectedPlayerOption, setSelectedPlayerOption] = useState(null);
     const [selectedPlayers, setSelectedPlayers] = useState([]);
   
     const playerOptions = playersData.map(player => ({
@@ -177,6 +143,7 @@ const Page = () => {
     }));
   
     const handlePlayerChange = selectedOption => {
+      setSelectedPlayerOption(selectedOption);
       setSelectedPlayer(selectedOption ? selectedOption.value : '');
     };
   
@@ -185,8 +152,9 @@ const Page = () => {
       if (selectedPlayer) {
         const player = playersData.find(player => player.name === selectedPlayer);
         if (player) {
-          // const modifiedName = `${player.name}${isCaptain ? ' *' : ''}${isWicketkeeper ? ' ✝' : ''}`;
-          setSelectedPlayers([...selectedPlayers, player.name]);
+          setSelectedPlayers((currentPlayers) => [...currentPlayers, player.name]);
+          setSelectedPlayer('');
+          setSelectedPlayerOption(null);
         }
       }
     };
@@ -226,10 +194,169 @@ const Page = () => {
     }, [selectedPlayers]);
     
     const [selectedPlayerImage, setSelectedPlayerImage] = useState("");
+    const [selectedPlayerImageOption, setSelectedPlayerImageOption] = useState(null);
     
     const handlePlayerImageChange = (option) => {
-      // option.image already holds the correct file (normal or blue)
+      setSelectedPlayerImageOption(option);
       setSelectedPlayerImage(option?.image ?? null);
+    };
+
+    const [savedTeamSheets, setSavedTeamSheets] = useState([]);
+    const [selectedSavedTeamSheet, setSelectedSavedTeamSheet] = useState(null);
+    const [saveMessage, setSaveMessage] = useState('');
+
+    const slugifyName = (value) =>
+      String(value || '')
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, '')
+        .replace(/[^a-z0-9_-]/g, '');
+
+    const buildSavedTeamSheetKey = (teamName, opponentName) => {
+      const teamSlug = slugifyName(teamName);
+      const opponentSlug = slugifyName(opponentName);
+
+      if (!teamSlug || !opponentSlug) {
+        return '';
+      }
+
+      return `${teamSlug}_${opponentSlug}`;
+    };
+
+    const getSavedTeamSheets = () => {
+      if (typeof window === 'undefined') {
+        return [];
+      }
+
+      const now = Date.now();
+      const savedSheets = [];
+
+      Object.keys(window.localStorage).forEach((key) => {
+        if (!key.startsWith(TEAM_SHEET_STORAGE_PREFIX)) {
+          return;
+        }
+
+        try {
+          const rawValue = window.localStorage.getItem(key);
+          if (!rawValue) {
+            return;
+          }
+
+          const parsedValue = JSON.parse(rawValue);
+
+          if (!parsedValue?.expiresAt || parsedValue.expiresAt < now) {
+            window.localStorage.removeItem(key);
+            return;
+          }
+
+          savedSheets.push({
+            label: parsedValue.name,
+            value: parsedValue.name,
+            data: parsedValue,
+          });
+        } catch (error) {
+          window.localStorage.removeItem(key);
+        }
+      });
+
+      return savedSheets.sort((a, b) => b.data.savedAt - a.data.savedAt);
+    };
+
+    const refreshSavedTeamSheets = () => {
+      setSavedTeamSheets(getSavedTeamSheets());
+    };
+
+    useEffect(() => {
+      refreshSavedTeamSheets();
+    }, []);
+
+    const handleSaveTeamSheet = () => {
+      const teamSheetName = buildSavedTeamSheetKey(
+        selectedTeam?.value,
+        selectedOpponent?.value
+      );
+
+      if (!teamSheetName) {
+        setSaveMessage('Select both the Brewood team and opponent before saving.');
+        return;
+      }
+
+      const now = Date.now();
+      const payload = {
+        name: teamSheetName,
+        savedAt: now,
+        expiresAt: now + TEAM_SHEET_TTL_MS,
+        formData: {
+          selectedTeam: selectedTeam?.value || '',
+          selectedOpponent: selectedOpponent?.value || '',
+          selectedOpponentTeam: selectedOpponentTeam?.value || '',
+          selectedLocation,
+          selectedDate,
+          selectedTime,
+          selectedPlayers,
+          isCaptain,
+          isWicketkeeper,
+          selectedPlayerImage,
+        },
+      };
+
+      window.localStorage.setItem(
+        `${TEAM_SHEET_STORAGE_PREFIX}${teamSheetName}`,
+        JSON.stringify(payload)
+      );
+
+      setSaveMessage(`Saved as ${teamSheetName}`);
+      refreshSavedTeamSheets();
+      setSelectedSavedTeamSheet({
+        label: payload.name,
+        value: payload.name,
+        data: payload,
+      });
+    };
+
+    const restoreTeamSheet = (savedTeamSheet) => {
+      const formData = savedTeamSheet?.data?.formData;
+
+      if (!formData) {
+        return;
+      }
+
+      const restoredTeam = teamOptions.find((option) => option.value === formData.selectedTeam) || null;
+      const restoredOpponent = opponentOptions.find((option) => option.value === formData.selectedOpponent) || null;
+      const restoredOpponentTeam = opponentTeamOptions.find((option) => option.value === formData.selectedOpponentTeam) || null;
+
+      setSelectedTeam(restoredTeam);
+      setSelectedOpponent(restoredOpponent);
+      setSelectedOpponentTeam(restoredOpponentTeam);
+      setSelectedLocation(formData.selectedLocation || '');
+      setSelectedDate(formData.selectedDate || '');
+      setSelectedTime(formData.selectedTime || '');
+      setSelectedPlayers(Array.isArray(formData.selectedPlayers) ? formData.selectedPlayers : []);
+      setIsCaptain(Number.isInteger(formData.isCaptain) ? formData.isCaptain : null);
+      setIsWicketkeeper(Number.isInteger(formData.isWicketkeeper) ? formData.isWicketkeeper : null);
+      setSelectedPlayer('');
+      setSelectedPlayerOption(null);
+      setSelectedPlayerImage(formData.selectedPlayerImage || '');
+      setSaveMessage(`Loaded ${savedTeamSheet.value}`);
+    };
+
+    useEffect(() => {
+      if (!selectedPlayerImage) {
+        setSelectedPlayerImageOption(null);
+        return;
+      }
+
+      const matchingOption = imageOptions.find((option) => option.image === selectedPlayerImage) || null;
+      setSelectedPlayerImageOption(matchingOption);
+    }, [imageOptions, selectedPlayerImage]);
+
+    const handleSavedTeamSheetChange = (option) => {
+      setSelectedSavedTeamSheet(option);
+      if (!option) {
+        setSaveMessage('');
+        return;
+      }
+      restoreTeamSheet(option);
     };
 
   
@@ -290,9 +417,9 @@ const Page = () => {
                 </span>
                 <div>
                   <label htmlFor="home">Home</label>
-                  <input type="radio" name="location" value="home" id="home"/>
+                  <input type="radio" name="location" value="home" id="home" checked={selectedLocation === 'home'} onChange={handleLocationChange}/>
                   <label htmlFor="away">Away</label>
-                  <input type="radio" name="location" value="away" id="away"/>
+                  <input type="radio" name="location" value="away" id="away" checked={selectedLocation === 'away'} onChange={handleLocationChange}/>
                 </div>
               </div>
               <div className="form__date">
@@ -333,10 +460,12 @@ const Page = () => {
                 </span>
               <div>
                 <Select
+                  value={selectedPlayerOption}
                   options={playerOptions}
                   onChange={handlePlayerChange}
                   placeholder="Select a player..."
                   className="form__players-select"
+                  isClearable
                 />
                 <div>
                 </div>
@@ -379,9 +508,11 @@ const Page = () => {
                 </span>
 
                 <Select
+  value={selectedPlayerImageOption}
   options={imageOptions}          // ⬅️  use the new list
   placeholder="Selected players with available images"
   onChange={handlePlayerImageChange}
+  isClearable
 />
 
               </div>
@@ -391,6 +522,20 @@ const Page = () => {
 
 
             <button className="form__print" onClick={handlePrintImage}>Print Image</button>
+            <button className="form__print" type="button" onClick={handleSaveTeamSheet}>Save Team Sheet</button>
+            <div className="form__image">
+              <span className="form__title">
+                Saved Team Sheets
+              </span>
+              <Select
+                value={selectedSavedTeamSheet}
+                options={savedTeamSheets}
+                placeholder="Load a saved team sheet"
+                onChange={handleSavedTeamSheetChange}
+                isClearable
+              />
+              {saveMessage && <p>{saveMessage}</p>}
+            </div>
           </div>
 
 
